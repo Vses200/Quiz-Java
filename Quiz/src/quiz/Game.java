@@ -1,0 +1,477 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package quiz;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
+/**
+ *
+ * @author admin
+ */
+public class Game extends javax.swing.JFrame implements ScaleImage{
+
+    /**
+     * Creates new form Game
+     */
+    
+    public static int count=0;
+    
+    //array of question and answers
+    String q[][] = new String[10][5];
+    public static int timer = 15;
+    public static int ansgiven=0;
+    public String answers[][]= new String[10][1];
+    String qa[][]=new String[10][2];
+    public static int score=0;
+    String username;
+   // public score dummy = null;
+    
+    public Game(String username) {
+        
+        count=0;
+        score=0;
+        this.username=username;
+        initComponents();
+        getContentPane().setBackground(Color.white);
+        scaleImage();
+        
+        
+        jButton3.setEnabled(false);
+        
+        
+        q[0][0] = "Which is used to find and fix bugs in the Java programs.?";
+        q[0][1] = "JVM";
+        q[0][2] = "JDB";
+        q[0][3] = "JDK";
+        q[0][4] = "JRE";
+
+        q[1][0] = "What is the return type of the hashCode() method in the Object class?";
+        q[1][1] = "int";
+        q[1][2] = "Object";
+        q[1][3] = "long";
+        q[1][4] = "void";
+
+        q[2][0] = "Which package contains the Random class?";
+        q[2][1] = "java.util package";
+        q[2][2] = "java.lang package";
+        q[2][3] = "java.awt package";
+        q[2][4] = "java.io package";
+
+        q[3][0] = "An interface with no fields or methods is known as?";
+        q[3][1] = "Runnable Interface";
+        q[3][2] = "Abstract Interface";
+        q[3][3] = "Marker Interface";
+        q[3][4] = "CharSequence Interface";
+
+        q[4][0] = "In which memory a String is stored, when we create a string using new operator?";
+        q[4][1] = "Stack";
+        q[4][2] = "String memory";
+        q[4][3] = "Random storage space";
+        q[4][4] = "Heap memory";
+
+        q[5][0] = "Which of the following is a marker interface?";
+        q[5][1] = "Runnable interface";
+        q[5][2] = "Remote interface";
+        q[5][3] = "Readable interface";
+        q[5][4] = "Result interface";
+
+        q[6][0] = "Which keyword is used for accessing the features of a package?";
+        q[6][1] = "import";
+        q[6][2] = "package";
+        q[6][3] = "extends";
+        q[6][4] = "export";
+
+        q[7][0] = "In java, jar stands for?";
+        q[7][1] = "Java Archive Runner";
+        q[7][2] = "Java Archive";
+        q[7][3] = "Java Application Resource";
+        q[7][4] = "Java Application Runner";
+
+        q[8][0] = "Which of the following is a mutable class in java?";
+        q[8][1] = "java.lang.StringBuilder";
+        q[8][2] = "java.lang.Short";
+        q[8][3] = "java.lang.Byte";
+        q[8][4] = "java.lang.String";
+
+        q[9][0] = "Which of the following option leads to the portability and security of Java?";
+        q[9][1] = "Bytecode is executed by JVM";
+        q[9][2] = "The applet makes the Java code secure and portable";
+        q[9][3] = "Use of exception handling";
+        q[9][4] = "Dynamic binding between objects";
+        
+        
+        
+        //answers
+        qa[0][1] = "JDB";
+        qa[1][1] = "int";
+        qa[2][1] = "java.util package";
+        qa[3][1] = "Marker Interface";
+        qa[4][1] = "Heap memory";
+        qa[5][1] = "Remote interface";
+        qa[6][1] = "import";
+        qa[7][1] = "Java Archive";
+        qa[8][1] = "java.lang.StringBuilder";
+        qa[9][1] = "Bytecode is executed by JVM";
+        
+        
+        
+        
+        start(0);
+        
+    }
+    
+    public void start(int count){
+        buttonGroup1.clearSelection();
+        Qno.setText(""+(count+1)+".");
+        question.setText(q[count][0]);
+        opt1.setLabel(q[count][1]);
+        opt2.setLabel(q[count][2]);
+        opt3.setLabel(q[count][3]);
+        opt4.setLabel(q[count][4]);
+        
+        opt1.setActionCommand(q[count][1]);
+        opt2.setActionCommand(q[count][2]);
+        opt3.setActionCommand(q[count][3]);
+        opt4.setActionCommand(q[count][4]);
+        
+        
+    }
+    
+    public void scaleImage(){
+        ImageIcon homeIcon= new ImageIcon("long_quiz.jpeg");
+        
+        Image img1=homeIcon.getImage();
+        Image resizedImg1=img1.getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon finalHomeImg =  new ImageIcon(resizedImg1);
+        jLabel1.setIcon(finalHomeImg);
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jLabel1 = new javax.swing.JLabel();
+        Qno = new javax.swing.JLabel();
+        question = new javax.swing.JLabel();
+        opt1 = new javax.swing.JRadioButton();
+        opt2 = new javax.swing.JRadioButton();
+        opt3 = new javax.swing.JRadioButton();
+        opt4 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+        lifeLine = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 200));
+        setPreferredSize(new java.awt.Dimension(1399, 499));
+
+        Qno.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        Qno.setText("1.");
+
+        question.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        question.setText("What is your name?");
+
+        buttonGroup1.add(opt1);
+        opt1.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
+        opt1.setText("jRadioButton1");
+
+        buttonGroup1.add(opt2);
+        opt2.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
+        opt2.setText("jRadioButton2");
+
+        buttonGroup1.add(opt3);
+        opt3.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
+        opt3.setText("jRadioButton3");
+
+        buttonGroup1.add(opt4);
+        opt4.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
+        opt4.setText("jRadioButton4");
+
+        jButton1.setBackground(new java.awt.Color(0, 204, 51));
+        jButton1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Next");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        lifeLine.setBackground(new java.awt.Color(51, 204, 255));
+        lifeLine.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        lifeLine.setForeground(new java.awt.Color(255, 255, 255));
+        lifeLine.setText("50-50 Lifeline");
+        lifeLine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lifeLineActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(153, 204, 0));
+        jButton3.setFont(new java.awt.Font("Tempus Sans ITC", 3, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Submit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(Qno)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(opt4)
+                    .addComponent(opt2)
+                    .addComponent(opt1)
+                    .addComponent(question)
+                    .addComponent(opt3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 820, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lifeLine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(77, 77, 77))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Qno)
+                    .addComponent(question))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(opt1)
+                        .addGap(18, 18, 18)
+                        .addComponent(opt2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lifeLine, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opt3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(opt4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(51, 51, 51))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        repaint();
+        
+        ansgiven=1;
+        if(buttonGroup1.getSelection()== null){
+            answers[count][0]= "";
+            System.out.println(answers[count][0]);
+        }
+        else{
+            answers[count][0]= buttonGroup1.getSelection().getActionCommand();
+            System.out.println(answers[count][0]);
+        }
+        
+         if(count==8){
+            jButton1.setEnabled(false);
+            jButton3.setEnabled(true);
+        }
+        
+        opt1.setEnabled(true);
+        opt2.setEnabled(true);
+        opt3.setEnabled(true);
+        opt4.setEnabled(true);
+        buttonGroup1.clearSelection();
+        count++;
+        start(count);  
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ansgiven=1;
+          if(buttonGroup1.getSelection() == null){
+                    answers[count][0] = "";
+                }else {
+                    answers[count][0] = buttonGroup1.getSelection().getActionCommand();
+                }
+                
+                for(int i =0 ; i < answers.length ; i++){
+                    if(answers[i][0]==(qa[i][1])){
+                        score+=10;
+                    }
+                }
+                buttonGroup1.clearSelection();
+                this.dispose();
+                new score(username, score).setVisible(true);
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
+    public score passDummySccore(int scored){
+    
+          score dummy = new score("Tanuja", scored);
+          return dummy;
+    }
+    
+    private void lifeLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lifeLineActionPerformed
+        // TODO add your handling code here:
+        if(count==2 || count==4 || count==6 || count==8 || count==9){
+            opt2.setEnabled(false);
+            opt3.setEnabled(false);
+        }
+        else{
+            opt1.setEnabled(false);
+            opt4.setEnabled(false);
+        }
+        lifeLine.setEnabled(false);
+    }//GEN-LAST:event_lifeLineActionPerformed
+    
+    public void paint(Graphics g){
+        super.paint(g);
+        String time = "Time Left - " + timer;
+        g.setColor(Color.red);
+        g.setFont(new Font("Tahoma", Font.BOLD, 25));
+        //g.drawString(time, 1150, 210);
+        
+        
+        
+        if(timer>0){
+            g.drawString(time, 1150, 210);
+        }
+        else{
+        g.drawString("Times up!!", 1150, 210);
+    }
+        timer--;
+        try{
+            Thread.sleep(1000);
+            repaint();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        if(ansgiven==1){
+            ansgiven=0;
+            timer=15;
+        }
+        
+        else if(timer<0){
+            
+            opt1.setEnabled(true);
+            opt2.setEnabled(true);
+            opt3.setEnabled(true);
+            opt4.setEnabled(true);
+            buttonGroup1.clearSelection();
+            timer = 15;
+            
+        
+        
+        if(count==8){
+            jButton1.setEnabled(false);
+            jButton3.setEnabled(true);
+        }
+        
+         if(count == 9){
+                if(buttonGroup1.getSelection() == null){
+                    answers[count][0] = "";
+                }else {
+                    answers[count][0] = buttonGroup1.getSelection().getActionCommand();
+                }
+                
+                for(int i =0 ; i <answers.length ; i++){
+                    if(answers[i][0]==(qa[i][1])){
+                        score+=10;
+                    }
+                }
+                this.dispose();
+                new score(username, score).setVisible(true);
+            }else{
+                if(buttonGroup1.getSelection() == null){
+                    answers[count][0] = "";
+                }else {
+                    answers[count][0] = buttonGroup1.getSelection().getActionCommand();
+                }
+                count++;
+                start(count);
+            }
+        }
+    }    
+        
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Game("").setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Qno;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton lifeLine;
+    private javax.swing.JRadioButton opt1;
+    private javax.swing.JRadioButton opt2;
+    private javax.swing.JRadioButton opt3;
+    private javax.swing.JRadioButton opt4;
+    private javax.swing.JLabel question;
+    // End of variables declaration//GEN-END:variables
+}
